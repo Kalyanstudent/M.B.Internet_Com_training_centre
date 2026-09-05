@@ -32,10 +32,15 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Database Credentials
-$db_host = "localhost";
-$db_user = "root";
-$db_pass = "";
-$db_name = "skillpoint_portal";
+// $db_host = "localhost";
+// $db_user = "root";
+// $db_pass = "";
+// $db_name = "skillpoint_portal";
+// $db_port = 3306;
+$db_host = "sql308.infinityfree.com";
+$db_user = "if0_42841606";
+$db_pass = "1xrSmNllvuj9";
+$db_name = "if0_42841606_skillpoint_portal";
 $db_port = 3306;
 
 try {
