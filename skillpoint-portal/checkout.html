@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Enrollment & Checkout | MB Internet And Digital Studio</title>
+  
+  <!-- Anti-Theme-Flash -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('mb_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Razorpay SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg site-navbar">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon-box"><i class="bi bi-laptop-fill"></i></div>
+        <div>
+          <div class="brand-title">MB Internet & Digital Studio</div>
+          <div class="brand-subtitle">Mobile & Gift House</div>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbarNav">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="siteNavbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="tax-services.html">Tax & ITR</a></li>
+          <li class="nav-item"><a class="nav-link" href="digital-services.html">Digital Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="mobile-gift-house.html">Mobile & Gifts</a></li>
+          <li class="nav-item"><a class="nav-link" href="important-links.html">Important Links</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div id="navbar-auth-container" class="d-flex align-items-center gap-2"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Checkout Container -->
+  <div id="checkout-wizard-container" class="py-5 bg-page">
+    <div class="container">
+      
+      <div class="max-w-700 mx-auto text-center mb-4">
+        <span class="badge-category accent-course mb-2 d-inline-block">Admissions & Checkout</span>
+        <h1 class="display-6 fw-bold">Course Enrollment Checkout</h1>
+        <p class="text-muted small">Complete your batch admission with instant server-verified Razorpay payment.</p>
+      </div>
+
+      <!-- Multi-step Progress Indicator -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8">
+          <div class="d-flex align-items-center justify-content-between position-relative px-3">
+            <div class="text-center" id="wizard-node-1">
+              <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center fw-bold mb-1" style="width: 38px; height: 38px;">1</div>
+              <div class="small fw-semibold text-dark">Student Info</div>
+            </div>
+            <div class="text-center" id="wizard-node-2">
+              <div class="rounded-circle bg-subtle text-muted border d-inline-flex align-items-center justify-content-center fw-bold mb-1" style="width: 38px; height: 38px;">2</div>
+              <div class="small fw-semibold text-muted">Order Review</div>
+            </div>
+            <div class="text-center" id="wizard-node-3">
+              <div class="rounded-circle bg-subtle text-muted border d-inline-flex align-items-center justify-content-center fw-bold mb-1" style="width: 38px; height: 38px;">3</div>
+              <div class="small fw-semibold text-muted">Payment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Left: Form Steps -->
+        <div class="col-lg-7">
+          
+          <!-- STEP 1: Student Information -->
+          <div id="checkout-step-1" class="card-custom p-4">
+            <h4 class="fw-bold fs-5 mb-3 text-dark"><i class="bi bi-person-badge-fill text-primary me-2"></i> Step 1: Student Admission Details</h4>
+            
+            <form id="step1-form" novalidate>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-dark">Selected Course <span class="text-danger">*</span></label>
+                <select id="checkout-course-select" class="form-select" required>
+                  <!-- Populated from API -->
+                </select>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-dark">Student Full Name <span class="text-danger">*</span></label>
+                  <input type="text" id="cust-name" class="form-control" placeholder="Full Name as on Certificate" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-dark">Mobile Number <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">+91</span>
+                    <input type="tel" id="cust-mobile" class="form-control" placeholder="10-digit mobile" maxlength="10" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-dark">Email Address <span class="text-danger">*</span></label>
+                <input type="email" id="cust-email" class="form-control" placeholder="name@example.com" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label small fw-semibold text-dark">Address / City <span class="text-danger">*</span></label>
+                <input type="text" id="cust-address" class="form-control" placeholder="Town, District, Pin Code" required>
+              </div>
+
+              <button type="button" id="btn-next-step2" class="btn btn-primary w-100 btn-lg">
+                Continue to Order Review <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- STEP 2: Order Review & Coupon -->
+          <div id="checkout-step-2" class="card-custom p-4" style="display: none;">
+            <h4 class="fw-bold fs-5 mb-3 text-dark"><i class="bi bi-receipt text-primary me-2"></i> Step 2: Review Enrollment Order</h4>
+            
+            <div class="p-3 bg-subtle rounded-3 border mb-4">
+              <div class="fw-bold text-dark summary-course-title">Course Title</div>
+              <div class="small text-muted summary-course-duration">Duration & Hours</div>
+            </div>
+
+            <!-- Coupon Input -->
+            <div class="mb-4">
+              <label class="form-label small fw-semibold text-dark">Have a Discount Coupon?</label>
+              <div class="input-group">
+                <input type="text" id="coupon-input" class="form-control text-uppercase" placeholder="e.g. SKILL10 or WELCOME500">
+                <button type="button" class="btn btn-outline-primary" id="apply-coupon-btn">Apply Coupon</button>
+              </div>
+              <div class="form-text small text-muted">Try coupon code <strong>SKILL10</strong> for 10% discount.</div>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button type="button" id="btn-back-step1" class="btn btn-outline-secondary flex-fill">
+                <i class="bi bi-arrow-left me-1"></i> Back
+              </button>
+              <button type="button" id="btn-next-step3" class="btn btn-primary flex-fill">
+                Proceed to Payment <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Payment Confirmation -->
+          <div id="checkout-step-3" class="card-custom p-4" style="display: none;">
+            <h4 class="fw-bold fs-5 mb-3 text-dark"><i class="bi bi-credit-card-2-front-fill text-primary me-2"></i> Step 3: Complete Payment</h4>
+            
+            <p class="small text-muted mb-4">
+              Click the button below to launch the secure Razorpay payment modal. You can pay via UPI (Google Pay, PhonePe, Paytm), Net Banking, Debit/Credit Card, or Wallets.
+            </p>
+
+            <button type="button" id="btn-pay-now" class="btn btn-primary w-100 btn-lg mb-3">
+              Pay <span id="pay-button-amount">₹0</span> & Enroll Now <i class="bi bi-shield-lock-fill ms-1"></i>
+            </button>
+
+            <button type="button" id="btn-back-step2" class="btn btn-outline-secondary w-100">
+              <i class="bi bi-arrow-left me-1"></i> Back to Review
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right: Sticky Order Summary -->
+        <div class="col-lg-5">
+          <div class="card-custom sticky-top" style="top: 90px;">
+            <h4 class="fw-bold fs-5 mb-3 text-dark">Summary of Fees</h4>
+
+            <div class="p-3 bg-subtle rounded-3 border mb-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted small">Course Fee:</span>
+                <strong class="text-dark summary-base-price">₹0</strong>
+              </div>
+
+              <div class="d-flex justify-content-between mb-2 text-success" id="summary-discount-row" style="display: none;">
+                <span class="small">Coupon Discount:</span>
+                <strong id="summary-discount-amount">- ₹0</strong>
+              </div>
+
+              <div class="d-flex justify-content-between pt-2 border-top">
+                <span class="fw-bold text-dark">Total Amount:</span>
+                <strong class="fs-5 text-primary summary-final-amount">₹0</strong>
+              </div>
+            </div>
+
+            <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i> Server Verified Price Integrity</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i> Official Enrollment ID Generated</li>
+              <li><i class="bi bi-check-circle-fill text-success me-2"></i> Instant Downloadable Tax Receipt</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom d-flex justify-content-between align-items-center">
+        <div>&copy; 2026 MB Internet And Digital Studio. All Rights Reserved.</div>
+        <a href="https://www.facebook.com/MBIDS/photos_by" target="_blank" rel="noopener noreferrer" class="text-white small"><i class="bi bi-facebook me-1"></i> Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/checkout.js"></script>
+</body>
+</html>

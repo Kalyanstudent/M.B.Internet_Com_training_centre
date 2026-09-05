@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Important Government & Official Links | MB Internet And Digital Studio</title>
+  <meta name="description" content="Verified directory of official government portals: Income Tax e-filing, GST Portal, UIDAI Aadhaar, EPFO, Passport Seva, DigiLocker, and Udyam MSME.">
+
+  <!-- Anti-Theme-Flash -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('mb_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg site-navbar">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon-box"><i class="bi bi-laptop-fill"></i></div>
+        <div>
+          <div class="brand-title">MB Internet & Digital Studio</div>
+          <div class="brand-subtitle">Mobile & Gift House</div>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbarNav">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="siteNavbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="tax-services.html">Tax & ITR</a></li>
+          <li class="nav-item"><a class="nav-link" href="digital-services.html">Digital Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="mobile-gift-house.html">Mobile & Gifts</a></li>
+          <li class="nav-item"><a class="nav-link active" href="important-links.html">Important Links</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div id="navbar-auth-container" class="d-flex align-items-center gap-2"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="py-5 bg-section border-bottom">
+    <div class="container py-3 text-center max-w-700 mx-auto">
+      <span class="badge-category accent-links mb-2 d-inline-block">Official Directory</span>
+      <h1 class="display-5 fw-bold mb-3">Important Government & Digital Links</h1>
+      <p class="text-muted mb-0">
+        Direct, safe, and verified access to essential government, tax, and citizen services portals. All external links open securely in a new browser tab.
+      </p>
+    </div>
+  </section>
+
+  <!-- Links Grid -->
+  <section class="py-5 bg-page">
+    <div class="container">
+      <div class="row g-4" id="important-links-grid-full">
+        <!-- Rendered dynamically via JavaScript from /api/important-links/list.php -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom d-flex justify-content-between align-items-center">
+        <div>&copy; 2026 MB Internet And Digital Studio. All Rights Reserved.</div>
+        <a href="https://www.facebook.com/MBIDS/photos_by" target="_blank" rel="noopener noreferrer" class="text-white small"><i class="bi bi-facebook me-1"></i> Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const container = document.getElementById('important-links-grid-full');
+      if (!container) return;
+
+      try {
+        const res = await API.get('api/important-links/list.php');
+        const links = (res.success && Array.isArray(res.data)) ? res.data : [];
+
+        if (links.length === 0) {
+          container.innerHTML = `<div class="col-12 text-center text-muted py-5">No official links listed.</div>`;
+          return;
+        }
+
+        container.innerHTML = links.map(link => `
+          <div class="col-md-6 col-lg-3">
+            <div class="important-link-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="card-icon-wrap accent-links mb-0" style="width: 44px; height: 44px; font-size: 1.25rem;">
+                  <i class="bi ${link.icon || 'bi-link-45deg'}"></i>
+                </div>
+                <span class="badge bg-subtle text-muted border small" style="font-size: 0.68rem;">External Portal</span>
+              </div>
+              <h4 class="fw-bold fs-6 mb-1 text-dark">${link.title}</h4>
+              <div class="small text-primary mb-2">${link.category}</div>
+              <p class="small text-muted flex-grow-1" style="font-size: 0.82rem;">${link.description}</p>
+              <div class="pt-2 border-top mt-auto">
+                <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary w-100">
+                  ${link.buttonText || 'Visit Portal'} <i class="bi bi-arrow-up-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) {
+        container.innerHTML = `<div class="col-12 text-center text-danger py-4">Failed to load links from database.</div>`;
+      }
+    });
+  </script>
+</body>
+</html>

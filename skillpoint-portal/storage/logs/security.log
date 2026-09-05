@@ -1,0 +1,2 @@
+[2026-09-03 22:16:49] [IP: 127.0.0.1] [UID: 42] [UNIT_TEST_SECURITY_EVENT] {"test_key":"test_value","password":"[REDACTED]"}
+[2026-09-03 22:42:45] [IP: 127.0.0.1] [UID: 42] [UNIT_TEST_SECURITY_EVENT] {"test_key":"test_value","password":"[REDACTED]"}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile & Gift House | MB Internet And Digital Studio</title>
+  <meta name="description" content="Explore quality mobile accessories, fast chargers, braided cables, earphones, and personalized customized gifts (photo mugs, frames, keychains, toys).">
+
+  <!-- Anti-Theme-Flash -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('mb_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg site-navbar">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon-box"><i class="bi bi-laptop-fill"></i></div>
+        <div>
+          <div class="brand-title">MB Internet & Digital Studio</div>
+          <div class="brand-subtitle">Mobile & Gift House</div>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbarNav">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="siteNavbarNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="tax-services.html">Tax & ITR</a></li>
+          <li class="nav-item"><a class="nav-link" href="digital-services.html">Digital Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="mobile-gift-house.html">Mobile & Gifts</a></li>
+          <li class="nav-item"><a class="nav-link" href="important-links.html">Important Links</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div id="navbar-auth-container" class="d-flex align-items-center gap-2"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="py-5 bg-section border-bottom">
+    <div class="container py-3 text-center max-w-700 mx-auto">
+      <span class="badge-category accent-mobile mb-2 d-inline-block">Retail & Custom Studio</span>
+      <h1 class="display-5 fw-bold mb-3">Mobile & Gift House</h1>
+      <p class="text-muted mb-0">
+        Quality mobile accessories, chargers, braided cables, bass earphones, and personalized customized gift items for birthdays, anniversaries, and special moments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Product Showcase Catalog -->
+  <section class="py-5 bg-page">
+    <div class="container">
+      
+      <!-- Category Filter Navigation -->
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 p-3 bg-card rounded-4 border shadow-sm">
+        <div class="btn-group flex-wrap" role="group">
+          <button type="button" class="btn btn-sm btn-primary prod-filter-btn active" data-category="all">All Products</button>
+          <button type="button" class="btn btn-sm btn-outline-primary prod-filter-btn" data-category="Mobile Accessories">Mobile Accessories</button>
+          <button type="button" class="btn btn-sm btn-outline-primary prod-filter-btn" data-category="Audio & Music">Audio & Earphones</button>
+          <button type="button" class="btn btn-sm btn-outline-primary prod-filter-btn" data-category="Gift House">Custom Gifts & Frames</button>
+        </div>
+
+        <span class="small text-muted" id="prod-count-text">Showing 8 Products</span>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row g-4" id="products-grid-container">
+        <!-- Rendered via JavaScript or fallback static -->
+      </div>
+
+      <!-- In-Store Inquiry Banner -->
+      <div class="mt-5 p-4 p-md-5 rounded-4 border bg-card text-center shadow-sm">
+        <h3 class="fw-bold mb-2">Looking for a specific model cover, cable, or custom photo mug?</h3>
+        <p class="text-muted max-w-700 mx-auto mb-4">
+          Visit MB Internet And Digital Studio in person or call us on <strong>+91 98765 43210</strong>. We print personalized photo mugs and custom acrylic frames within 24 hours!
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="contact.html" class="btn btn-primary">
+            <i class="bi bi-geo-alt-fill me-1"></i> Visit Studio
+          </a>
+          <a href="https://www.facebook.com/MBIDS/photos_by" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
+            <i class="bi bi-facebook me-1"></i> View Photo Gallery
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Product Inquiry Modal -->
+  <div class="modal fade" id="productInquiryModal" tabindex="-1" aria-labelledby="productInquiryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border shadow">
+        <div class="modal-header border-bottom">
+          <h5 class="modal-title fw-bold" id="productInquiryModalLabel">Product Inquiry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="small text-muted mb-3" id="modal-prod-desc">Inquire about availability or customize this product at our studio.</p>
+          <div class="p-3 bg-subtle rounded-3 border mb-3">
+            <div class="fw-bold text-dark" id="modal-prod-name">Product Name</div>
+            <div class="small text-primary fw-bold" id="modal-prod-price">₹0</div>
+          </div>
+          <p class="small text-muted mb-0"><i class="bi bi-shop me-1 text-primary"></i> Available at <strong>MB Internet And Digital Studio</strong> counter.</p>
+        </div>
+        <div class="modal-footer bg-subtle p-3">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="contact.html" class="btn btn-primary">Contact / Visit Store</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom d-flex justify-content-between align-items-center">
+        <div>&copy; 2026 MB Internet And Digital Studio | Mobile & Gift House. All Rights Reserved.</div>
+        <a href="https://www.facebook.com/MBIDS/photos_by" target="_blank" rel="noopener noreferrer" class="text-white small"><i class="bi bi-facebook me-1"></i> Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const container = document.getElementById('products-grid-container');
+      const countEl = document.getElementById('prod-count-text');
+      const filterBtns = document.querySelectorAll('.prod-filter-btn');
+
+      async function loadProducts(cat = 'all') {
+        if (!container) return;
+        try {
+          const res = await API.get('api/products/list.php', { category: cat });
+          const products = (res.success && Array.isArray(res.data)) ? res.data : [];
+
+          if (countEl) countEl.textContent = `Showing ${products.length} Products`;
+
+          if (products.length === 0) {
+            container.innerHTML = `<div class="col-12 text-center text-muted py-5">No items found in this category.</div>`;
+            return;
+          }
+
+          container.innerHTML = products.map(p => `
+            <div class="col-sm-6 col-lg-3">
+              <div class="product-card">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <div class="card-icon-wrap accent-mobile mb-0" style="width: 44px; height: 44px; font-size: 1.25rem;">
+                    <i class="bi ${p.icon || 'bi-phone-fill'}"></i>
+                  </div>
+                  ${p.badge ? `<span class="badge bg-warning-subtle text-warning border small">${p.badge}</span>` : ''}
+                </div>
+                <h4 class="fw-bold fs-6 mb-1 text-dark">${p.name}</h4>
+                <div class="small text-muted mb-2">${p.category}</div>
+                <p class="small text-muted flex-grow-1" style="font-size: 0.82rem;">${p.description}</p>
+                <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
+                  <span class="fw-bold text-primary fs-6">${p.price ? formatINR(p.price) : 'In-Store'}</span>
+                  <button type="button" class="btn btn-sm btn-outline-primary" onclick="openProductInquiry('${p.name}', '${p.price ? formatINR(p.price) : 'In-Store'}', '${p.description}')">
+                    Inquire <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        } catch (e) {
+          container.innerHTML = `<div class="col-12 text-center text-danger py-4">Error loading products.</div>`;
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('btn-primary', 'active');
+            b.classList.add('btn-outline-primary');
+          });
+          btn.classList.add('btn-primary', 'active');
+          btn.classList.remove('btn-outline-primary');
+          loadProducts(btn.getAttribute('data-category'));
+        });
+      });
+
+      window.openProductInquiry = function(name, price, desc) {
+        document.getElementById('modal-prod-name').textContent = name;
+        document.getElementById('modal-prod-price').textContent = price;
+        document.getElementById('modal-prod-desc').textContent = desc;
+        const modal = new bootstrap.Modal(document.getElementById('productInquiryModal'));
+        modal.show();
+      };
+
+      await loadProducts();
+    });
+  </script>
+</body>
+</html>
